@@ -1,0 +1,32 @@
+\ProvidesPackage{browserscreenshot}[2016/11/12 Browser Screenshot]
+
+\RequirePackage{tikz}
+
+\newcommand{\browserscreenshot}[2]{
+    \begin{tikzpicture}[font=\sffamily][font=\tiny]
+        % The screenshot itself
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{#1}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            % The window title bar
+            \fill[gray!20!white, draw]
+              (0,1) --
+              ++(1,0) {[rounded corners=5pt] --
+              ++(0,0.05 * 1.6) --
+              ++(-1,0)} --
+              cycle
+              {};
+            \draw[black!50!white, draw] (0,0.998) -- (1,0.998);
+
+            % Three round dots as dummy window handles
+            \fill[gray!40!white] (0.025,        1.04) circle [radius=3pt];
+            \fill[gray!40!white] (0.025 + 0.03, 1.04) circle [radius=3pt];
+            \fill[gray!40!white] (0.025 + 0.06, 1.04) circle [radius=3pt];
+
+            % The navigation bar's white background to suggest input field
+            \fill[white,rounded corners=2pt] (0.12, 1 + 0.01 * 1.6) rectangle (1 - 0.025, 1 + 0.04 * 1.6);
+
+            % The navigation bar text, add [draw] to see the bounding box.
+            \node[align=left, text=gray!40, text width=\textwidth * 0.8] at (0.53, 1 + 0.024 * 1.6) {#2};
+        \end{scope}
+    \end{tikzpicture}
+}
