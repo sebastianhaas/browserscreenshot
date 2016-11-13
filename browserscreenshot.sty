@@ -7,7 +7,7 @@
         % The screenshot itself
         \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{#1}};
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-            % The window title bar
+            % The window handle bar
             \fill[gray!20!white, draw]
               (0,1) --
               ++(1,0) {[rounded corners=5pt] --
@@ -15,6 +15,7 @@
               ++(-1,0)} --
               cycle
               {};
+            % Drop shadow of window handle bar
             \draw[black!50!white, draw] (0,0.998) -- (1,0.998);
 
             % Three round dots as dummy window handles
@@ -27,6 +28,9 @@
 
             % The navigation bar text, add [draw] to see the bounding box.
             \node[align=left, text=gray!40, text width=\textwidth * 0.8] at (0.53, 1 + 0.024 * 1.6) {#2};
+
+            % The bottom border
+            \draw[black!30!white, draw] (0,0) -- (1,0);
         \end{scope}
     \end{tikzpicture}
 }
