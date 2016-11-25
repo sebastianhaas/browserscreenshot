@@ -18,4 +18,4 @@ The screenshot's width can be set relative to `\textwidth`:
 ```latex
 \browserscreenshot[0.3]{screenshot.png}{https://example.com/}
 ```
-This will render the screenshot one-third of `\textwidth`. 
+This will render the screenshot one third of `\textwidth`. 
