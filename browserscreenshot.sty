@@ -2,10 +2,10 @@
 
 \RequirePackage{tikz}
 
-\newcommand{\browserscreenshot}[2]{
+\newcommand{\browserscreenshot}[3][1]{
     \begin{tikzpicture}[font=\sffamily][font=\tiny]
         % The screenshot itself
-        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{#1}};
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=#1\textwidth]{#2}};
         \begin{scope}[x={(image.south east)},y={(image.north west)}]
             % The window handle bar
             \fill[gray!20!white, draw]
@@ -27,7 +27,7 @@
             \fill[white,rounded corners=2pt] (0.12, 1 + 0.01 * 1.6) rectangle (1 - 0.025, 1 + 0.04 * 1.6);
 
             % The navigation bar text, add [draw] to see the bounding box.
-            \node[align=left, text=gray!40, text width=\textwidth * 0.8] at (0.53, 1 + 0.024 * 1.6) {#2};
+            \node[align=left, text=gray!40, text width=#1\textwidth * 0.8] at (0.53, 1 + 0.024 * 1.6) {#3};
 
             % The bottom border
             \draw[black!30!white, draw] (0,0) -- (1,0);
