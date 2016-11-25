@@ -12,3 +12,10 @@ becomes
 \browserscreenshot{screenshot.png}{https://example.com/}
 ```
 The first argument is the image path, the second the url to be displayed in the mockup browser's address bar.
+
+### Width of the screenshot
+The screenshot's width can be set relative to `\textwidth`:
+```latex
+\browserscreenshot[0.3]{screenshot.png}{https://example.com/}
+```
+This will render the screenshot one-third of `\textwidth`. 
